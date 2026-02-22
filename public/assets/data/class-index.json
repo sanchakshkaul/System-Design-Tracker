@@ -1,0 +1,1196 @@
+[
+  {
+    "id": 1,
+    "module": "sys",
+    "slug": "system-design-foundations",
+    "title": "System Design Foundations",
+    "topics": [
+      "CAP theorem",
+      "Load estimation",
+      "Caching",
+      "REST API",
+      "Fault tolerance"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "CAP Dilemma Debate",
+        "desc": "Present 3 real systems (Amazon, Google Docs, Cassandra). Ask: which CAP properties do they sacrifice and why? Small groups debate, then share out.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Load Estimation Worksheet",
+        "desc": "Give a scenario (e.g. a food delivery app). Students estimate RPS, bandwidth, and storage using back-of-envelope math. Walk through solution together.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Cache Strategy Card Sort",
+        "desc": "Print cards describing scenarios. Students match each to read-through / write-through / write-back and justify the choice.",
+        "time": "15 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "1-Minute Architecture Sketch",
+        "desc": "Pose a simple system prompt (e.g. URL shortener). Students sketch a component diagram + API endpoints in 5 minutes, then peer-review.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "module": "sys",
+    "slug": "requirement-analysis-and-api-design",
+    "title": "Requirement Analysis & API Design",
+    "topics": [
+      "Functional/non-functional",
+      "REST",
+      "Pagination",
+      "SLA/SLO/SLI",
+      "Redis/CDN"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Requirements Treasure Hunt",
+        "desc": "Show a vague product brief ('Build a messaging app'). Students must extract hidden non-functional requirements buried in the description.",
+        "time": "15 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "API Contract Design",
+        "desc": "Students design REST endpoints, pagination, and versioning for a given feature. Compare schemas and discuss trade-offs.",
+        "time": "30 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "SLO Definition Workshop",
+        "desc": "Given a fintech app scenario, teams define SLOs for latency, availability, and error rate. Present and critique each other's targets.",
+        "time": "25 min",
+        "format": "Team"
+      },
+      {
+        "type": "assess",
+        "title": "Exit Quiz: NFRs",
+        "desc": "5-question rapid quiz: identify whether each requirement is functional or non-functional. Includes tricky edge cases.",
+        "time": "10 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "module": "sys",
+    "slug": "load-balancing-and-ci-cd-systems",
+    "title": "Load Balancing & CI/CD Systems",
+    "topics": [
+      "L4 vs L7",
+      "Nginx",
+      "Job queues",
+      "CI/CD pipelines",
+      "Rollback"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Traffic Routing Simulation",
+        "desc": "Use sticky notes on a whiteboard as 'requests'. Physically route them through L4 and L7 nodes. Visualize what gets dropped during a node failure.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "CI/CD Pipeline Flowchart",
+        "desc": "Students draw a complete CI/CD pipeline from commit to production, labeling each stage, artifact store, and rollback trigger.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Rollback Scenario Drill",
+        "desc": "Present a bad deploy scenario. Students must identify the rollback strategy, estimate blast radius, and write the incident checklist.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Nginx Config Review",
+        "desc": "Share a simplified Nginx config with 2 bugs. Students spot, explain, and fix the issues.",
+        "time": "10 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "module": "sys",
+    "slug": "database-architecture",
+    "title": "Database Architecture",
+    "topics": [
+      "Read/write workloads",
+      "Sharding",
+      "Caching strategies",
+      "Message delivery"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Read vs Write Heavy Challenge",
+        "desc": "Show 4 real apps (Twitter, Bank, Netflix, WhatsApp). Classify each as read-heavy / write-heavy / both and explain the consequences.",
+        "time": "15 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Sharding Strategy Design",
+        "desc": "Given a social media schema, students choose user-based vs region-based sharding, draw the shard map, and identify hotspot risks.",
+        "time": "30 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Cache Invalidation Puzzle",
+        "desc": "Scenario: cached data goes stale. Students must trace the invalidation path and redesign the cache layer to prevent re-occurrence.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "DB Design Critique",
+        "desc": "Show a flawed DB schema. Students write a short critique covering indexing, normalization, and scalability concerns.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "module": "sys",
+    "slug": "data-partitioning-and-consistency",
+    "title": "Data Partitioning & Consistency",
+    "topics": [
+      "Consistent hashing",
+      "Quorum",
+      "Strong vs eventual",
+      "Gossip protocol"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Consistent Hashing Ring Demo",
+        "desc": "Use a physical ring (whiteboard circle) and sticky note 'nodes'. Add/remove nodes and see how keys redistribute. Count moves with/without virtual nodes.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Quorum Calculator",
+        "desc": "Students calculate read quorum, write quorum, and fault tolerance for N=5, 7, 9 node clusters. Explore the R+W>N rule.",
+        "time": "20 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Consistency Level Trade-off Table",
+        "desc": "Create a 3-column table: scenario, recommended consistency level, justification. Fill in 6 real-world scenarios.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Gossip Protocol Trace",
+        "desc": "Given a 6-node cluster with partial updates, trace how gossip spreads. Identify when all nodes converge.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "module": "sys",
+    "slug": "asynchronous-communication",
+    "title": "Asynchronous Communication",
+    "topics": [
+      "Kafka",
+      "Producer-consumer",
+      "Topics/partitions",
+      "Alert pipelines",
+      "Monitoring"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Sync vs Async War Stories",
+        "desc": "Start with a real outage story (e.g. a sync API cascade failure). Ask: how would async messaging have prevented this?",
+        "time": "15 min",
+        "format": "Discussion"
+      },
+      {
+        "type": "intro",
+        "title": "Kafka Architecture Diagram",
+        "desc": "Students draw a Kafka setup from scratch: topics, partitions, producers, consumers, consumer groups, and offsets for an e-commerce order system.",
+        "time": "30 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Message Ordering Challenge",
+        "desc": "Scenario: an order system needs strict message ordering per user but high parallelism overall. Students design the partition key strategy.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Alert Pipeline Design",
+        "desc": "Design an alert pipeline from metrics ingestion to notification. Must specify queue, processing, deduplication, and delivery stages.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "module": "sys",
+    "slug": "search-and-indexing-systems",
+    "title": "Search & Indexing Systems",
+    "topics": [
+      "Data ingestion",
+      "Tokenization",
+      "Index maintenance",
+      "Ranking",
+      "Query optimization"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Google Search Reverse-Engineering",
+        "desc": "Search for the same query 3 different ways. Compare results. Hypothesize: what signals might influence the ranking?",
+        "time": "15 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Inverted Index Builder",
+        "desc": "Manually build an inverted index for 5 short documents. Perform a multi-term query and trace the lookup path.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Query Optimization Lab",
+        "desc": "Given a slow search query plan, students rewrite it using filter-first, scoring optimization, and caching strategies.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Architecture Review: E-commerce Search",
+        "desc": "Sketch a full search system for an e-commerce site covering ingest, index, query, and cache layers.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "module": "sys",
+    "slug": "distributed-storage",
+    "title": "Distributed Storage",
+    "topics": [
+      "Object storage",
+      "Chunking",
+      "Deduplication",
+      "Versioning",
+      "Cross-region sync"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "How Dropbox Works? Guess It!",
+        "desc": "Before the lesson, students sketch how they think Dropbox stores files. After the lesson, compare original sketch with real architecture.",
+        "time": "20 min",
+        "format": "Solo"
+      },
+      {
+        "type": "intro",
+        "title": "Chunking & Dedup Exercise",
+        "desc": "Given 3 files with overlapping content, manually apply content-addressed chunking and calculate storage savings from deduplication.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Multi-Region Sync Design",
+        "desc": "Design cross-region sync for a file storage system: handle conflict resolution, bandwidth cost, and consistency.",
+        "time": "25 min",
+        "format": "Teams"
+      },
+      {
+        "type": "assess",
+        "title": "Metadata DB Schema",
+        "desc": "Design a metadata DB for a cloud storage system covering file versioning, chunk references, and access control.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "module": "sys",
+    "slug": "domain-name-resolution",
+    "title": "Domain Name Resolution",
+    "topics": [
+      "DNS resolution",
+      "Recursive/iterative queries",
+      "TTL",
+      "DNS load balancing"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "DNS Detective",
+        "desc": "Run `nslookup` on 5 different popular domains. Compare TTLs, IP counts, and response types. What patterns do you notice?",
+        "time": "15 min",
+        "format": "Solo"
+      },
+      {
+        "type": "intro",
+        "title": "DNS Resolution Walkthrough",
+        "desc": "Physically act out a DNS resolution: one student is the browser, others are resolver, root, TLD, and authoritative servers. Pass paper 'queries' between roles.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "practice",
+        "title": "TTL Trade-off Analysis",
+        "desc": "Given 3 scenarios (marketing site, banking API, streaming CDN), choose the ideal TTL and justify: cache freshness vs resolver load.",
+        "time": "15 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "DNS Load Balancing Plan",
+        "desc": "Design a DNS-based load balancing strategy for a global app with users in 3 regions. Cover geo-routing, health checks, and failover.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "module": "sys",
+    "slug": "distributed-locks-and-coordination",
+    "title": "Distributed Locks & Coordination",
+    "topics": [
+      "Lease-based locking",
+      "Quorum coordination",
+      "Fencing tokens",
+      "Consensus"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "The Double-Booking Problem",
+        "desc": "Act out a hotel booking scenario with 2 clients booking the last room simultaneously. What goes wrong without locks? Brainstorm solutions first.",
+        "time": "15 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Fencing Token Diagram",
+        "desc": "Draw the fencing token flow: client acquires lock, sends token, storage validates. Then show what happens when a stale client ignores the fence.",
+        "time": "20 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Redlock Analysis",
+        "desc": "Walk through Redis Redlock on N=5 nodes. Calculate: majority quorum, failure scenarios, and clock skew risks.",
+        "time": "25 min",
+        "format": "Group"
+      },
+      {
+        "type": "assess",
+        "title": "Lock Design Decision",
+        "desc": "3 scenarios (payment deduction, seat reservation, leader election). Choose and justify the right locking strategy for each.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "module": "sys",
+    "slug": "distributed-transactions-and-consensus",
+    "title": "Distributed Transactions & Consensus",
+    "topics": [
+      "2PC",
+      "Rollback/compensation",
+      "Idempotency",
+      "WAL",
+      "Failure recovery"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Bank Transfer Gone Wrong",
+        "desc": "Simulate a money transfer where the debit succeeds but credit fails. Walk through the disaster and ask: what should have happened?",
+        "time": "15 min",
+        "format": "Discussion"
+      },
+      {
+        "type": "intro",
+        "title": "2PC Phase Diagram",
+        "desc": "Students draw the 2PC protocol with coordinator + 2 participants, labeling prepare, commit, abort, and failure paths.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Idempotency Key Design",
+        "desc": "Design idempotency for a payment API: define the key structure, storage, expiry, and duplicate detection logic.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Saga vs 2PC Comparison",
+        "desc": "Given 2 scenarios, students choose between Saga and 2PC, and write a 1-paragraph justification for each.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "module": "sys",
+    "slug": "peer-to-peer-systems",
+    "title": "Peer-to-Peer Systems",
+    "topics": [
+      "Peer discovery",
+      "DHT",
+      "Data routing",
+      "Fault tolerance",
+      "Chunk replication"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "BitTorrent In The Room",
+        "desc": "Simulate a file share using sticky note 'chunks'. Students must find peers, request chunks, and reassemble the file. Feel how P2P works.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "DHT Key Lookup",
+        "desc": "Build a simple Kademlia-style DHT on paper: place nodes on a keyspace, route a lookup step-by-step using XOR distance.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Churn Simulation",
+        "desc": "Given a 10-node P2P network, randomly remove 3 nodes. Show how the system re-routes, replicates, and heals.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "assess",
+        "title": "P2P Design Brief",
+        "desc": "Design a P2P video streaming network. Cover discovery, chunk distribution, NAT traversal, and abuse prevention.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "module": "lld",
+    "slug": "oop-principles-and-uml-basics",
+    "title": "OOP Principles & UML Basics",
+    "topics": [
+      "Encapsulation",
+      "Inheritance",
+      "Polymorphism",
+      "UML class & sequence diagrams"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Real-World Object Hunt",
+        "desc": "Pick 3 objects from your daily life. Model them as classes with attributes, methods, and relationships. Which OOP principle does each embody?",
+        "time": "15 min",
+        "format": "Solo"
+      },
+      {
+        "type": "intro",
+        "title": "UML Class Diagram: Library System",
+        "desc": "Students draw a complete UML class diagram for a library: Book, Member, Loan — with multiplicity, access modifiers, and relationships.",
+        "time": "30 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Sequence Diagram Trace",
+        "desc": "Trace the sequence of a user checking out a book: draw lifelines, messages, and return arrows for all participants.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Aggregation vs Composition Quiz",
+        "desc": "10 relationship examples. Students label each as aggregation, composition, association, or inheritance with a one-line reason.",
+        "time": "10 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "module": "lld",
+    "slug": "design-patterns-creational",
+    "title": "Design Patterns: Creational",
+    "topics": [
+      "Factory",
+      "Abstract Factory",
+      "Singleton",
+      "Builder",
+      "Object creation decoupling"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Pattern Scavenger Hunt",
+        "desc": "Open any popular open-source library. Find and name at least 2 creational patterns used in the codebase. Share findings.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Builder vs Constructor Comparison",
+        "desc": "Implement a Pizza class: first with a telescoping constructor, then with Builder. Count parameters and compare readability.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Singleton Anti-pattern Lab",
+        "desc": "Given a broken Singleton with thread-safety issues, students identify the race condition and fix it using double-checked locking.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Pattern Identification MCQ",
+        "desc": "6 code snippets — identify which creational pattern each uses and what problem it solves.",
+        "time": "10 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "module": "lld",
+    "slug": "solid-principles",
+    "title": "SOLID Principles",
+    "topics": [
+      "SRP",
+      "OCP",
+      "LSP",
+      "ISP",
+      "DIP",
+      "Code smells",
+      "Cohesion/coupling"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Code Smell Gallery Walk",
+        "desc": "Post 5 code snippets around the room (or screen). Students rotate and annotate each with the SOLID principle being violated.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Refactor to SOLID",
+        "desc": "Give a bloated God class. Students refactor it step-by-step: extract responsibilities, invert dependencies, and segregate interfaces.",
+        "time": "35 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "LSP Litmus Test",
+        "desc": "Show 5 inheritance hierarchies. Students apply the Liskov test: 'Can I replace the parent with this child without breaking behavior?'",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Design Review Memo",
+        "desc": "Provide a 50-line class. Students write a short review identifying SOLID violations and proposing fixes.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "module": "lld",
+    "slug": "structural-patterns",
+    "title": "Structural Patterns",
+    "topics": [
+      "Adapter",
+      "Facade",
+      "Composite",
+      "Decorator",
+      "Composition over inheritance"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Real-World Pattern Mapping",
+        "desc": "Match each structural pattern to a real-world analog: Adapter = power plug converter, Facade = car dashboard... Students come up with their own.",
+        "time": "15 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Decorator Chain Builder",
+        "desc": "Build a text formatter: plain → bold → italic → underline using the Decorator pattern. Show how decorators stack without modifying originals.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Adapter Design Challenge",
+        "desc": "Given a legacy payment API and a new interface contract, design an Adapter that bridges them. Map each method and handle mismatches.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Pattern Selection Justification",
+        "desc": "3 scenarios. Students choose the correct structural pattern and write a 2-sentence justification for each choice.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "module": "lld",
+    "slug": "behavioral-patterns-i",
+    "title": "Behavioral Patterns I",
+    "topics": [
+      "Strategy",
+      "Observer",
+      "Command",
+      "Event-driven interactions"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Strategy vs Hard-coding",
+        "desc": "Show a sorting function with 4 if/else branches. Refactor live into Strategy. Count how many lines changed — and how many didn't.",
+        "time": "20 min",
+        "format": "Demo"
+      },
+      {
+        "type": "intro",
+        "title": "Observer Pattern Simulation",
+        "desc": "Students model a notification system: one 'publisher' posts events, multiple 'subscribers' react differently. Draw the event flow and observer registration.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Command + Undo Implementation",
+        "desc": "Design a text editor's undo/redo using Command pattern. Implement execute(), undo(), and a command history stack.",
+        "time": "25 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Pattern Refactoring Task",
+        "desc": "Given monolithic event handling code, refactor it using Observer or Command with a brief explanation of the design decision.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "module": "lld",
+    "slug": "behavioral-patterns-ii",
+    "title": "Behavioral Patterns II",
+    "topics": [
+      "State",
+      "Chain of Responsibility",
+      "Workflow handling",
+      "Transaction modeling"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "State Machine Exploration",
+        "desc": "Map out the states of a vending machine or traffic light on a whiteboard. Students discover they've drawn a State pattern without being told.",
+        "time": "15 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "State Transition Diagram",
+        "desc": "Design a full State Machine for an order lifecycle: pending → confirmed → shipped → delivered → returned, with allowed transitions.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Chain of Responsibility Design",
+        "desc": "Design a support ticket escalation: L1 → L2 → Manager → CEO. Implement handler chaining, early exit, and fallback.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Transaction Flow Modeling",
+        "desc": "Model a payment transaction state machine with success, failure, retry, and timeout states. Include transitions and guard conditions.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "module": "lld",
+    "slug": "concurrency-in-lld",
+    "title": "Concurrency in LLD",
+    "topics": [
+      "Mutex",
+      "Semaphore",
+      "Thread pools",
+      "Deadlock",
+      "Safe resource access"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Dining Philosophers Live",
+        "desc": "5 students, 5 pencils, 5 plates of 'food'. Simulate the Dining Philosophers problem. Who deadlocks first? Then find the fix.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Mutex vs Semaphore Showdown",
+        "desc": "Design 2 scenarios: one needs mutual exclusion, one needs resource counting. Implement both and explain why each choice is correct.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Thread Pool Sizing Calculator",
+        "desc": "Given CPU-bound vs I/O-bound workloads, calculate optimal thread pool size using Little's Law and benchmark assumptions.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Deadlock Detection Drill",
+        "desc": "Show 3 code snippets with concurrent resource acquisition. Identify which causes a deadlock and rewrite to fix it.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "module": "lld",
+    "slug": "extensible-system-design",
+    "title": "Extensible System Design",
+    "topics": [
+      "Polymorphism",
+      "Strategy-based rules",
+      "Domain modeling",
+      "Feature extensibility"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Feature Request Chaos",
+        "desc": "Start with a simple discount calculator. Add 5 new requirements one by one. Watch the code collapse without extensibility. Then redesign.",
+        "time": "20 min",
+        "format": "Demo"
+      },
+      {
+        "type": "intro",
+        "title": "Polymorphic Discount Engine",
+        "desc": "Design a discount system using polymorphism: PercentageDiscount, FixedDiscount, BuyOneGetOne. Add a new type without touching existing code.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Board Game Domain Model",
+        "desc": "Model a board game engine (Chess or Checkers): pieces, moves, validation rules — designed for extensibility to new game types.",
+        "time": "30 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Extensibility Checklist Review",
+        "desc": "Review a provided design. Score it on: OCP compliance, polymorphism use, coupling level, ease of adding features. Give a 1-5 score with justification.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "module": "lld",
+    "slug": "persistence-and-repositories",
+    "title": "Persistence & Repositories",
+    "topics": [
+      "Entity modeling",
+      "Relationship mapping",
+      "Transactions",
+      "Repository pattern",
+      "Service layer"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "ORM vs Raw SQL Debate",
+        "desc": "Show the same query in ORM and raw SQL. Discuss: when does each shine? Where does ORM abstraction break down?",
+        "time": "15 min",
+        "format": "Discussion"
+      },
+      {
+        "type": "intro",
+        "title": "Repository Pattern Implementation",
+        "desc": "Implement UserRepository with CRUD methods behind an interface. Show how the service layer never touches the DB directly.",
+        "time": "30 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Transaction Boundary Design",
+        "desc": "Given a multi-step order creation flow (create order + deduct stock + charge payment), define transaction boundaries and rollback logic.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Layered Architecture Review",
+        "desc": "Diagram a feature request end-to-end: Controller → Service → Repository → DB. Identify any layer violations or leaky abstractions.",
+        "time": "15 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "module": "lld",
+    "slug": "api-layer-and-error-handling",
+    "title": "API Layer & Error Handling",
+    "topics": [
+      "REST endpoints",
+      "Input validation",
+      "Rate limiting",
+      "HTTP codes",
+      "Global error handling"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "HTTP Status Code Roulette",
+        "desc": "Call 10 real public APIs with bad inputs. Log the status codes returned. Vote on which ones are correct, misleading, or lazy.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Error Handling Framework Design",
+        "desc": "Design a global error handler: map exceptions to HTTP codes, define error response schema, and handle validation vs business vs infra errors differently.",
+        "time": "25 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Rate Limiting Algorithm Comparison",
+        "desc": "Implement token bucket and leaky bucket on paper for the same traffic pattern. Compare burst behavior and smoothness.",
+        "time": "20 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "API Design Audit",
+        "desc": "Review a provided REST API spec. Identify: missing validation, wrong status codes, unclear error messages, and security gaps.",
+        "time": "20 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "module": "lld",
+    "slug": "code-review-and-refactoring",
+    "title": "Code Review & Refactoring",
+    "topics": [
+      "Design problems",
+      "Modularization",
+      "Naming conventions",
+      "Readability",
+      "Separation of concerns"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "WTF/Minute Code Review",
+        "desc": "Display notoriously messy code. Students count their 'WTFs per minute' as a humorous proxy for code quality. Then identify fixes.",
+        "time": "15 min",
+        "format": "Group"
+      },
+      {
+        "type": "intro",
+        "title": "Refactoring Kata",
+        "desc": "Give a working but messy function (e.g. a billing calculator). Students refactor it in stages: rename → extract → split → test-name → simplify.",
+        "time": "30 min",
+        "format": "Solo"
+      },
+      {
+        "type": "practice",
+        "title": "Peer Code Review Round",
+        "desc": "Exchange code snippets with a partner. Write a structured code review covering: naming, cohesion, complexity, and testability.",
+        "time": "25 min",
+        "format": "Pairs"
+      },
+      {
+        "type": "assess",
+        "title": "Before/After Explanation",
+        "desc": "Show a before and after refactoring. Students write a paragraph explaining what changed, why it's better, and what trade-offs were made.",
+        "time": "10 min",
+        "format": "Solo"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "module": "lld",
+    "slug": "capstone-lld-mock-interview",
+    "title": "Capstone: LLD Mock Interview",
+    "topics": [
+      "End-to-end LLD",
+      "OOP modeling",
+      "Persistence",
+      "Trade-offs",
+      "Scalability"
+    ],
+    "estimatedReadMinutes": 10,
+    "activityTypes": [
+      "spark",
+      "intro",
+      "practice",
+      "assess"
+    ],
+    "activities": [
+      {
+        "type": "spark",
+        "title": "Warm-Up: 5-Min Sketch",
+        "desc": "Give a simple problem (Parking Lot or ATM). 5 minutes, draw anything. No pressure — just get ideas on paper. Share and compare approaches.",
+        "time": "10 min",
+        "format": "Solo"
+      },
+      {
+        "type": "intro",
+        "title": "Structured Problem-Solving Framework",
+        "desc": "Walk through the 5-step LLD interview approach: clarify → identify entities → design classes → add patterns → discuss trade-offs.",
+        "time": "20 min",
+        "format": "Group"
+      },
+      {
+        "type": "practice",
+        "title": "Full Mock Interview: 35 Min Design",
+        "desc": "Choose one: Hotel Reservation, Ride Sharing, or Movie Booking. Design the full system: OOP model, persistence, API layer, and scalability notes.",
+        "time": "35 min",
+        "format": "Solo"
+      },
+      {
+        "type": "assess",
+        "title": "Design Presentation & Peer Critique",
+        "desc": "Each student presents their capstone design for 5 minutes. Peers give structured feedback: 1 strength, 1 improvement, 1 question.",
+        "time": "30 min",
+        "format": "Group"
+      }
+    ]
+  }
+]

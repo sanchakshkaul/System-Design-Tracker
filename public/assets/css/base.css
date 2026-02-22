@@ -1,0 +1,155 @@
+:root {
+  --bg: #0b0e14;
+  --surface: #131720;
+  --surface2: #1a2030;
+  --border: #252d3d;
+  --accent: #00e5ff;
+  --accent2: #ff6b35;
+  --accent3: #7c3aed;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --green: #10b981;
+  --yellow: #f59e0b;
+  --danger: #f97316;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.top-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0, 229, 255, 0.07);
+}
+
+header {
+  padding: 48px 0 36px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+header h1 {
+  font-size: clamp(1.9rem, 5vw, 3.3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+}
+
+header p {
+  margin-top: 16px;
+  color: var(--muted);
+  max-width: 760px;
+  line-height: 1.7;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+}
+
+.badge-intro {
+  background: rgba(124, 58, 237, 0.18);
+  color: #a78bfa;
+  border: 1px solid rgba(124, 58, 237, 0.45);
+}
+
+.badge-practice {
+  background: rgba(0, 229, 255, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+}
+
+.badge-spark {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--yellow);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.badge-assess {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+button {
+  font: inherit;
+}
+
+@media (max-width: 680px) {
+  .container {
+    padding: 0 16px 28px;
+  }
+
+  header {
+    padding-top: 30px;
+  }
+}

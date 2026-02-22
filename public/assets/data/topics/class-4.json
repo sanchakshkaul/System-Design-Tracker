@@ -1,0 +1,194 @@
+{
+  "id": 4,
+  "module": "sys",
+  "slug": "database-architecture",
+  "title": "Database Architecture",
+  "topics": [
+    "Read/write workloads",
+    "Sharding",
+    "Caching strategies",
+    "Message delivery"
+  ],
+  "estimatedReadMinutes": 10,
+  "activities": [
+    {
+      "type": "spark",
+      "title": "Read vs Write Heavy Challenge",
+      "desc": "Show 4 real apps (Twitter, Bank, Netflix, WhatsApp). Classify each as read-heavy / write-heavy / both and explain the consequences.",
+      "time": "15 min",
+      "format": "Group"
+    },
+    {
+      "type": "intro",
+      "title": "Sharding Strategy Design",
+      "desc": "Given a social media schema, students choose user-based vs region-based sharding, draw the shard map, and identify hotspot risks.",
+      "time": "30 min",
+      "format": "Solo"
+    },
+    {
+      "type": "practice",
+      "title": "Cache Invalidation Puzzle",
+      "desc": "Scenario: cached data goes stale. Students must trace the invalidation path and redesign the cache layer to prevent re-occurrence.",
+      "time": "20 min",
+      "format": "Pairs"
+    },
+    {
+      "type": "assess",
+      "title": "DB Design Critique",
+      "desc": "Show a flawed DB schema. Students write a short critique covering indexing, normalization, and scalability concerns.",
+      "time": "15 min",
+      "format": "Solo"
+    }
+  ],
+  "activityTypes": [
+    "spark",
+    "intro",
+    "practice",
+    "assess"
+  ],
+  "sections": {
+    "concepts": [
+      {
+        "heading": "What it is",
+        "body": "Database Architecture covers the design decisions needed to build reliable systems and explain those decisions in interviews. The core focus is understanding Read/write workloads, Sharding, Caching strategies and linking each concept to an architecture consequence."
+      },
+      {
+        "heading": "Why it matters in interviews",
+        "body": "Interviewers expect you to justify trade-offs, not just list tools. For Database Architecture, strong answers connect constraints, architecture choices, and failure behavior while staying explicit about what you would de-scope first."
+      }
+    ],
+    "architecture": {
+      "components": [
+        "Client",
+        "API Gateway",
+        "Core Service",
+        "Cache",
+        "Primary Database",
+        "Message Queue",
+        "Worker",
+        "Monitoring"
+      ],
+      "flowSteps": [
+        "Clarify scope and constraints for Database Architecture before choosing architecture primitives.",
+        "Define boundaries for Read/write workloads and map request/write paths.",
+        "Introduce resilience points such as retries, idempotency, and observability checkpoints.",
+        "Evaluate bottlenecks under peak load or feature expansion assumptions.",
+        "Capture final trade-offs and explain why rejected alternatives were not selected."
+      ],
+      "diagramAscii": "Client --> API Gateway --> Service Layer --> Cache\n                              |            |\n                              v            v\n                        Message Queue --> Workers\n                              |\n                              v\n                         Primary Database\n                              |\n                              v\n                           Monitoring"
+    },
+    "tradeoffs": [
+      {
+        "decision": "Consistency vs Availability",
+        "optionA": "Strong consistency with synchronous coordination",
+        "optionB": "Higher availability with eventual consistency",
+        "chooseWhen": "Prefer option A for correctness-critical flows in Database Architecture; choose option B for read-heavy workloads with tolerant staleness.",
+        "risk": "Choosing incorrectly can either over-complicate the stack or produce stale data under failures."
+      },
+      {
+        "decision": "Latency vs Durability",
+        "optionA": "Fast in-memory path with async persistence",
+        "optionB": "Write-through path before ack",
+        "chooseWhen": "Use fast path when user experience and throughput dominate; use durable path for financial or irreversible operations.",
+        "risk": "Async persistence increases loss window; sync persistence increases tail latency."
+      },
+      {
+        "decision": "Horizontal Scale vs Simplicity",
+        "optionA": "Shard and partition early",
+        "optionB": "Scale vertically and delay partitioning",
+        "chooseWhen": "Adopt sharding when clear data volume growth exists; stay simple when traffic is modest and team size is small.",
+        "risk": "Premature sharding raises ops burden; delaying too long can cause painful migrations."
+      },
+      {
+        "decision": "Operational Cost vs Performance",
+        "optionA": "Multi-region active-active setup",
+        "optionB": "Single region plus disaster recovery",
+        "chooseWhen": "Choose multi-region for strict global SLA and low-latency demands; choose single region to control cost and complexity.",
+        "risk": "Multi-region introduces replication and consistency challenges; single-region increases outage blast radius."
+      }
+    ],
+    "examples": [
+      {
+        "name": "Social Feed Storage",
+        "context": "Social Feed Storage demands clear boundaries around Read/write workloads and predictable behavior during peak usage.",
+        "designChoice": "Use a staged design with a fast path and a durable path, then expose explicit fallback behavior to callers.",
+        "why": "This keeps latency stable for normal traffic while preserving correctness for critical writes and failure recovery."
+      },
+      {
+        "name": "Payment Ledger Storage",
+        "context": "Payment Ledger Storage introduces changing requirements and forces design updates without breaking existing clients.",
+        "designChoice": "Introduce stable interfaces, versioned contracts, and observability from the start so changes remain testable.",
+        "why": "You can iterate safely while preserving backward compatibility and maintaining confidence in production behavior."
+      }
+    ],
+    "interviewQa": [
+      {
+        "question": "How would you design database architecture for 10x growth?",
+        "answerFramework": [
+          "Clarify constraints and traffic shape",
+          "Estimate scale and hotspots",
+          "Propose baseline architecture",
+          "Address bottlenecks and failure modes",
+          "Explain final trade-offs"
+        ]
+      },
+      {
+        "question": "Which trade-off is most important in database architecture and why?",
+        "answerFramework": [
+          "State competing goals",
+          "Choose one based on business risk",
+          "Describe mitigation for the rejected option",
+          "Define monitoring signals",
+          "Describe revisit trigger"
+        ]
+      },
+      {
+        "question": "How do you handle failures in Read/write workloads?",
+        "answerFramework": [
+          "Enumerate failure classes",
+          "Add retries and idempotency boundaries",
+          "Plan degraded behavior",
+          "Protect data correctness",
+          "Close with incident response approach"
+        ]
+      },
+      {
+        "question": "What would be your API and data model choices for database architecture?",
+        "answerFramework": [
+          "List key entities",
+          "Define read/write patterns",
+          "Choose consistency level",
+          "Define pagination or batching strategy",
+          "Cover evolution and versioning"
+        ]
+      },
+      {
+        "question": "How would you explain this design to a senior interviewer in 5 minutes?",
+        "answerFramework": [
+          "Start with requirements",
+          "Show architecture and data flow",
+          "Highlight critical trade-offs",
+          "Call out failure handling",
+          "Suggest future improvements"
+        ]
+      }
+    ],
+    "revision": {
+      "cheatSheet": [
+        "Start every Database Architecture answer with assumptions and limits.",
+        "Name one latency-sensitive path and one correctness-sensitive path.",
+        "State how Read/write workloads is written and read under load.",
+        "Explain one scaling strategy and one fallback strategy.",
+        "Mention observability: metrics, logs, and tracing checkpoints.",
+        "Call out a deliberate de-scope to keep MVP practical.",
+        "Finish with what you would improve in version two."
+      ],
+      "redFlags": [
+        "Choosing technology without linking it to constraints.",
+        "Ignoring data consistency or idempotency for write operations.",
+        "No failure-mode story for dependency outages.",
+        "No plan to measure whether the design is actually working."
+      ]
+    }
+  }
+}

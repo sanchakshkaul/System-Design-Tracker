@@ -1,0 +1,195 @@
+{
+  "id": 16,
+  "module": "lld",
+  "slug": "structural-patterns",
+  "title": "Structural Patterns",
+  "topics": [
+    "Adapter",
+    "Facade",
+    "Composite",
+    "Decorator",
+    "Composition over inheritance"
+  ],
+  "estimatedReadMinutes": 10,
+  "activities": [
+    {
+      "type": "spark",
+      "title": "Real-World Pattern Mapping",
+      "desc": "Match each structural pattern to a real-world analog: Adapter = power plug converter, Facade = car dashboard... Students come up with their own.",
+      "time": "15 min",
+      "format": "Group"
+    },
+    {
+      "type": "intro",
+      "title": "Decorator Chain Builder",
+      "desc": "Build a text formatter: plain → bold → italic → underline using the Decorator pattern. Show how decorators stack without modifying originals.",
+      "time": "25 min",
+      "format": "Solo"
+    },
+    {
+      "type": "practice",
+      "title": "Adapter Design Challenge",
+      "desc": "Given a legacy payment API and a new interface contract, design an Adapter that bridges them. Map each method and handle mismatches.",
+      "time": "20 min",
+      "format": "Pairs"
+    },
+    {
+      "type": "assess",
+      "title": "Pattern Selection Justification",
+      "desc": "3 scenarios. Students choose the correct structural pattern and write a 2-sentence justification for each choice.",
+      "time": "15 min",
+      "format": "Solo"
+    }
+  ],
+  "activityTypes": [
+    "spark",
+    "intro",
+    "practice",
+    "assess"
+  ],
+  "sections": {
+    "concepts": [
+      {
+        "heading": "What it is",
+        "body": "Structural Patterns covers the design decisions needed to build reliable systems and explain those decisions in interviews. The core focus is understanding Adapter, Facade, Composite and linking each concept to an architecture consequence."
+      },
+      {
+        "heading": "Why it matters in interviews",
+        "body": "Interviewers expect you to justify trade-offs, not just list tools. For Structural Patterns, strong answers connect constraints, architecture choices, and failure behavior while staying explicit about what you would de-scope first."
+      }
+    ],
+    "architecture": {
+      "components": [
+        "API Layer",
+        "Controller",
+        "Domain Model",
+        "Service Layer",
+        "Repository",
+        "Database",
+        "Policy Engine",
+        "Observability"
+      ],
+      "flowSteps": [
+        "Clarify scope and constraints for Structural Patterns before choosing architecture primitives.",
+        "Define boundaries for Adapter and map request/write paths.",
+        "Introduce resilience points such as retries, idempotency, and observability checkpoints.",
+        "Evaluate bottlenecks under peak load or feature expansion assumptions.",
+        "Capture final trade-offs and explain why rejected alternatives were not selected."
+      ],
+      "diagramAscii": "Client --> API Layer --> Controller --> Service Layer\n                                     |\n                                     v\n                                Domain Model\n                                     |\n                                     v\n                                Repository --> Database\n                                     |\n                                     v\n                                Observability"
+    },
+    "tradeoffs": [
+      {
+        "decision": "Inheritance vs Composition",
+        "optionA": "Deep inheritance hierarchy",
+        "optionB": "Composed collaborators with interfaces",
+        "chooseWhen": "Use composition by default in Structural Patterns; use inheritance only for stable is-a relationships.",
+        "risk": "Deep hierarchies are brittle and hard to evolve."
+      },
+      {
+        "decision": "Extensibility vs Delivery Speed",
+        "optionA": "Abstracted design with extension points",
+        "optionB": "Direct implementation optimized for current scope",
+        "chooseWhen": "Invest in extensibility if frequent feature variants are expected; keep it direct for short-lived or fixed-scope components.",
+        "risk": "Over-abstraction slows delivery; under-abstraction creates future rewrite cost."
+      },
+      {
+        "decision": "Strict Layering vs Pragmatic Access",
+        "optionA": "Controller -> Service -> Repository only",
+        "optionB": "Selective shortcuts for simple reads",
+        "chooseWhen": "Use strict layering for larger teams and long-lived systems; allow shortcuts for isolated utility flows.",
+        "risk": "Shortcuts can spread and weaken boundaries if not governed."
+      },
+      {
+        "decision": "Runtime Flexibility vs Predictability",
+        "optionA": "Plugin/strategy driven behavior",
+        "optionB": "Static branching in code paths",
+        "chooseWhen": "Use strategy plugins for high variation domains; use static paths when behavior is stable.",
+        "risk": "Highly dynamic systems can be harder to debug and reason about."
+      }
+    ],
+    "examples": [
+      {
+        "name": "Payment Adapter",
+        "context": "Payment Adapter demands clear boundaries around Adapter and predictable behavior during peak usage.",
+        "designChoice": "Use a staged design with a fast path and a durable path, then expose explicit fallback behavior to callers.",
+        "why": "This keeps latency stable for normal traffic while preserving correctness for critical writes and failure recovery."
+      },
+      {
+        "name": "Facade for Legacy APIs",
+        "context": "Facade for Legacy APIs introduces changing requirements and forces design updates without breaking existing clients.",
+        "designChoice": "Introduce stable interfaces, versioned contracts, and observability from the start so changes remain testable.",
+        "why": "You can iterate safely while preserving backward compatibility and maintaining confidence in production behavior."
+      }
+    ],
+    "interviewQa": [
+      {
+        "question": "How would you design structural patterns for 10x growth?",
+        "answerFramework": [
+          "Clarify constraints and traffic shape",
+          "Estimate scale and hotspots",
+          "Propose baseline architecture",
+          "Address bottlenecks and failure modes",
+          "Explain final trade-offs"
+        ]
+      },
+      {
+        "question": "Which trade-off is most important in structural patterns and why?",
+        "answerFramework": [
+          "State competing goals",
+          "Choose one based on business risk",
+          "Describe mitigation for the rejected option",
+          "Define monitoring signals",
+          "Describe revisit trigger"
+        ]
+      },
+      {
+        "question": "How do you handle failures in Adapter?",
+        "answerFramework": [
+          "Enumerate failure classes",
+          "Add retries and idempotency boundaries",
+          "Plan degraded behavior",
+          "Protect data correctness",
+          "Close with incident response approach"
+        ]
+      },
+      {
+        "question": "What would be your API and data model choices for structural patterns?",
+        "answerFramework": [
+          "List key entities",
+          "Define read/write patterns",
+          "Choose consistency level",
+          "Define pagination or batching strategy",
+          "Cover evolution and versioning"
+        ]
+      },
+      {
+        "question": "How would you explain this design to a senior interviewer in 5 minutes?",
+        "answerFramework": [
+          "Start with requirements",
+          "Show architecture and data flow",
+          "Highlight critical trade-offs",
+          "Call out failure handling",
+          "Suggest future improvements"
+        ]
+      }
+    ],
+    "revision": {
+      "cheatSheet": [
+        "Start every Structural Patterns answer with assumptions and limits.",
+        "Name one latency-sensitive path and one correctness-sensitive path.",
+        "State how Adapter is written and read under load.",
+        "Explain one scaling strategy and one fallback strategy.",
+        "Mention observability: metrics, logs, and tracing checkpoints.",
+        "Call out a deliberate de-scope to keep MVP practical.",
+        "Finish with what you would improve in version two."
+      ],
+      "redFlags": [
+        "Choosing technology without linking it to constraints.",
+        "Ignoring data consistency or idempotency for write operations.",
+        "No failure-mode story for dependency outages.",
+        "No plan to measure whether the design is actually working."
+      ]
+    }
+  }
+}

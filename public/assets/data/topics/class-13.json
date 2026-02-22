@@ -1,0 +1,194 @@
+{
+  "id": 13,
+  "module": "lld",
+  "slug": "oop-principles-and-uml-basics",
+  "title": "OOP Principles & UML Basics",
+  "topics": [
+    "Encapsulation",
+    "Inheritance",
+    "Polymorphism",
+    "UML class & sequence diagrams"
+  ],
+  "estimatedReadMinutes": 10,
+  "activities": [
+    {
+      "type": "spark",
+      "title": "Real-World Object Hunt",
+      "desc": "Pick 3 objects from your daily life. Model them as classes with attributes, methods, and relationships. Which OOP principle does each embody?",
+      "time": "15 min",
+      "format": "Solo"
+    },
+    {
+      "type": "intro",
+      "title": "UML Class Diagram: Library System",
+      "desc": "Students draw a complete UML class diagram for a library: Book, Member, Loan — with multiplicity, access modifiers, and relationships.",
+      "time": "30 min",
+      "format": "Solo"
+    },
+    {
+      "type": "practice",
+      "title": "Sequence Diagram Trace",
+      "desc": "Trace the sequence of a user checking out a book: draw lifelines, messages, and return arrows for all participants.",
+      "time": "20 min",
+      "format": "Pairs"
+    },
+    {
+      "type": "assess",
+      "title": "Aggregation vs Composition Quiz",
+      "desc": "10 relationship examples. Students label each as aggregation, composition, association, or inheritance with a one-line reason.",
+      "time": "10 min",
+      "format": "Solo"
+    }
+  ],
+  "activityTypes": [
+    "spark",
+    "intro",
+    "practice",
+    "assess"
+  ],
+  "sections": {
+    "concepts": [
+      {
+        "heading": "What it is",
+        "body": "OOP Principles & UML Basics covers the design decisions needed to build reliable systems and explain those decisions in interviews. The core focus is understanding Encapsulation, Inheritance, Polymorphism and linking each concept to an architecture consequence."
+      },
+      {
+        "heading": "Why it matters in interviews",
+        "body": "Interviewers expect you to justify trade-offs, not just list tools. For OOP Principles & UML Basics, strong answers connect constraints, architecture choices, and failure behavior while staying explicit about what you would de-scope first."
+      }
+    ],
+    "architecture": {
+      "components": [
+        "API Layer",
+        "Controller",
+        "Domain Model",
+        "Service Layer",
+        "Repository",
+        "Database",
+        "Policy Engine",
+        "Observability"
+      ],
+      "flowSteps": [
+        "Clarify scope and constraints for OOP Principles & UML Basics before choosing architecture primitives.",
+        "Define boundaries for Encapsulation and map request/write paths.",
+        "Introduce resilience points such as retries, idempotency, and observability checkpoints.",
+        "Evaluate bottlenecks under peak load or feature expansion assumptions.",
+        "Capture final trade-offs and explain why rejected alternatives were not selected."
+      ],
+      "diagramAscii": "Client --> API Layer --> Controller --> Service Layer\n                                     |\n                                     v\n                                Domain Model\n                                     |\n                                     v\n                                Repository --> Database\n                                     |\n                                     v\n                                Observability"
+    },
+    "tradeoffs": [
+      {
+        "decision": "Inheritance vs Composition",
+        "optionA": "Deep inheritance hierarchy",
+        "optionB": "Composed collaborators with interfaces",
+        "chooseWhen": "Use composition by default in OOP Principles & UML Basics; use inheritance only for stable is-a relationships.",
+        "risk": "Deep hierarchies are brittle and hard to evolve."
+      },
+      {
+        "decision": "Extensibility vs Delivery Speed",
+        "optionA": "Abstracted design with extension points",
+        "optionB": "Direct implementation optimized for current scope",
+        "chooseWhen": "Invest in extensibility if frequent feature variants are expected; keep it direct for short-lived or fixed-scope components.",
+        "risk": "Over-abstraction slows delivery; under-abstraction creates future rewrite cost."
+      },
+      {
+        "decision": "Strict Layering vs Pragmatic Access",
+        "optionA": "Controller -> Service -> Repository only",
+        "optionB": "Selective shortcuts for simple reads",
+        "chooseWhen": "Use strict layering for larger teams and long-lived systems; allow shortcuts for isolated utility flows.",
+        "risk": "Shortcuts can spread and weaken boundaries if not governed."
+      },
+      {
+        "decision": "Runtime Flexibility vs Predictability",
+        "optionA": "Plugin/strategy driven behavior",
+        "optionB": "Static branching in code paths",
+        "chooseWhen": "Use strategy plugins for high variation domains; use static paths when behavior is stable.",
+        "risk": "Highly dynamic systems can be harder to debug and reason about."
+      }
+    ],
+    "examples": [
+      {
+        "name": "Library System",
+        "context": "Library System demands clear boundaries around Encapsulation and predictable behavior during peak usage.",
+        "designChoice": "Use a staged design with a fast path and a durable path, then expose explicit fallback behavior to callers.",
+        "why": "This keeps latency stable for normal traffic while preserving correctness for critical writes and failure recovery."
+      },
+      {
+        "name": "Course Enrollment Model",
+        "context": "Course Enrollment Model introduces changing requirements and forces design updates without breaking existing clients.",
+        "designChoice": "Introduce stable interfaces, versioned contracts, and observability from the start so changes remain testable.",
+        "why": "You can iterate safely while preserving backward compatibility and maintaining confidence in production behavior."
+      }
+    ],
+    "interviewQa": [
+      {
+        "question": "How would you design oop principles & uml basics for 10x growth?",
+        "answerFramework": [
+          "Clarify constraints and traffic shape",
+          "Estimate scale and hotspots",
+          "Propose baseline architecture",
+          "Address bottlenecks and failure modes",
+          "Explain final trade-offs"
+        ]
+      },
+      {
+        "question": "Which trade-off is most important in oop principles & uml basics and why?",
+        "answerFramework": [
+          "State competing goals",
+          "Choose one based on business risk",
+          "Describe mitigation for the rejected option",
+          "Define monitoring signals",
+          "Describe revisit trigger"
+        ]
+      },
+      {
+        "question": "How do you handle failures in Encapsulation?",
+        "answerFramework": [
+          "Enumerate failure classes",
+          "Add retries and idempotency boundaries",
+          "Plan degraded behavior",
+          "Protect data correctness",
+          "Close with incident response approach"
+        ]
+      },
+      {
+        "question": "What would be your API and data model choices for oop principles & uml basics?",
+        "answerFramework": [
+          "List key entities",
+          "Define read/write patterns",
+          "Choose consistency level",
+          "Define pagination or batching strategy",
+          "Cover evolution and versioning"
+        ]
+      },
+      {
+        "question": "How would you explain this design to a senior interviewer in 5 minutes?",
+        "answerFramework": [
+          "Start with requirements",
+          "Show architecture and data flow",
+          "Highlight critical trade-offs",
+          "Call out failure handling",
+          "Suggest future improvements"
+        ]
+      }
+    ],
+    "revision": {
+      "cheatSheet": [
+        "Start every OOP Principles & UML Basics answer with assumptions and limits.",
+        "Name one latency-sensitive path and one correctness-sensitive path.",
+        "State how Encapsulation is written and read under load.",
+        "Explain one scaling strategy and one fallback strategy.",
+        "Mention observability: metrics, logs, and tracing checkpoints.",
+        "Call out a deliberate de-scope to keep MVP practical.",
+        "Finish with what you would improve in version two."
+      ],
+      "redFlags": [
+        "Choosing technology without linking it to constraints.",
+        "Ignoring data consistency or idempotency for write operations.",
+        "No failure-mode story for dependency outages.",
+        "No plan to measure whether the design is actually working."
+      ]
+    }
+  }
+}

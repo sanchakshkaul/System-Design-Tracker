@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Design Module</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/hub.css">
+</head>
+<body data-module-filter="sys" data-page-title="System Design Module" data-page-tag="// Module 1" data-page-description="Classes 1-12 focused on distributed systems, scalability, reliability, and architecture trade-offs.">
+  <div class="container">
+    <header>
+      <nav class="top-nav">
+        <a class="nav-link" href="/">All Classes</a>
+        <a class="nav-link active" href="/modules/system-design">System Design</a>
+        <a class="nav-link" href="/modules/lld">LLD / OOP</a>
+      </nav>
+      <div class="header-tag" id="header-tag"></div>
+      <h1 id="page-title"></h1>
+      <p id="page-description"></p>
+    </header>
+
+    <div class="stats" id="stats-bar"></div>
+
+    <section class="progress-section">
+      <div class="progress-title">Module Progress Tracker <span id="done-count">0 / 12</span></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill"></div></div>
+      <div class="progress-label"><span>Not started</span><span>All done</span></div>
+      <div class="class-check-grid" id="check-grid"></div>
+    </section>
+
+    <div class="legend">
+      <div class="legend-item"><span class="badge badge-intro">Intro</span> Introduce concept</div>
+      <div class="legend-item"><span class="badge badge-practice">Practice</span> Reinforce skills</div>
+      <div class="legend-item"><span class="badge badge-spark">Spark</span> Curiosity / engagement</div>
+      <div class="legend-item"><span class="badge badge-assess">Assess</span> Check understanding</div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Module Classes</button>
+      <button class="filter-btn" data-filter="intro">Intro</button>
+      <button class="filter-btn" data-filter="practice">Practice</button>
+      <button class="filter-btn" data-filter="spark">Spark</button>
+      <button class="filter-btn" data-filter="assess">Assess</button>
+    </div>
+
+    <div class="search-wrap">
+      <span class="search-icon">Search</span>
+      <input type="text" id="search" placeholder="Search system design topics">
+    </div>
+
+    <div class="classes-grid" id="classes-grid"></div>
+    <div class="empty-state" id="empty-state">No classes match your search.</div>
+  </div>
+
+  <script src="/assets/js/api.js"></script>
+  <script src="/assets/js/search.js"></script>
+  <script src="/assets/js/progress.js"></script>
+  <script src="/assets/js/hub.js"></script>
+</body>
+</html>

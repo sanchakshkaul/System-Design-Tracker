@@ -1,0 +1,195 @@
+{
+  "id": 21,
+  "module": "lld",
+  "slug": "persistence-and-repositories",
+  "title": "Persistence & Repositories",
+  "topics": [
+    "Entity modeling",
+    "Relationship mapping",
+    "Transactions",
+    "Repository pattern",
+    "Service layer"
+  ],
+  "estimatedReadMinutes": 10,
+  "activities": [
+    {
+      "type": "spark",
+      "title": "ORM vs Raw SQL Debate",
+      "desc": "Show the same query in ORM and raw SQL. Discuss: when does each shine? Where does ORM abstraction break down?",
+      "time": "15 min",
+      "format": "Discussion"
+    },
+    {
+      "type": "intro",
+      "title": "Repository Pattern Implementation",
+      "desc": "Implement UserRepository with CRUD methods behind an interface. Show how the service layer never touches the DB directly.",
+      "time": "30 min",
+      "format": "Solo"
+    },
+    {
+      "type": "practice",
+      "title": "Transaction Boundary Design",
+      "desc": "Given a multi-step order creation flow (create order + deduct stock + charge payment), define transaction boundaries and rollback logic.",
+      "time": "20 min",
+      "format": "Pairs"
+    },
+    {
+      "type": "assess",
+      "title": "Layered Architecture Review",
+      "desc": "Diagram a feature request end-to-end: Controller → Service → Repository → DB. Identify any layer violations or leaky abstractions.",
+      "time": "15 min",
+      "format": "Solo"
+    }
+  ],
+  "activityTypes": [
+    "spark",
+    "intro",
+    "practice",
+    "assess"
+  ],
+  "sections": {
+    "concepts": [
+      {
+        "heading": "What it is",
+        "body": "Persistence & Repositories covers the design decisions needed to build reliable systems and explain those decisions in interviews. The core focus is understanding Entity modeling, Relationship mapping, Transactions and linking each concept to an architecture consequence."
+      },
+      {
+        "heading": "Why it matters in interviews",
+        "body": "Interviewers expect you to justify trade-offs, not just list tools. For Persistence & Repositories, strong answers connect constraints, architecture choices, and failure behavior while staying explicit about what you would de-scope first."
+      }
+    ],
+    "architecture": {
+      "components": [
+        "API Layer",
+        "Controller",
+        "Domain Model",
+        "Service Layer",
+        "Repository",
+        "Database",
+        "Policy Engine",
+        "Observability"
+      ],
+      "flowSteps": [
+        "Clarify scope and constraints for Persistence & Repositories before choosing architecture primitives.",
+        "Define boundaries for Entity modeling and map request/write paths.",
+        "Introduce resilience points such as retries, idempotency, and observability checkpoints.",
+        "Evaluate bottlenecks under peak load or feature expansion assumptions.",
+        "Capture final trade-offs and explain why rejected alternatives were not selected."
+      ],
+      "diagramAscii": "Client --> API Layer --> Controller --> Service Layer\n                                     |\n                                     v\n                                Domain Model\n                                     |\n                                     v\n                                Repository --> Database\n                                     |\n                                     v\n                                Observability"
+    },
+    "tradeoffs": [
+      {
+        "decision": "Inheritance vs Composition",
+        "optionA": "Deep inheritance hierarchy",
+        "optionB": "Composed collaborators with interfaces",
+        "chooseWhen": "Use composition by default in Persistence & Repositories; use inheritance only for stable is-a relationships.",
+        "risk": "Deep hierarchies are brittle and hard to evolve."
+      },
+      {
+        "decision": "Extensibility vs Delivery Speed",
+        "optionA": "Abstracted design with extension points",
+        "optionB": "Direct implementation optimized for current scope",
+        "chooseWhen": "Invest in extensibility if frequent feature variants are expected; keep it direct for short-lived or fixed-scope components.",
+        "risk": "Over-abstraction slows delivery; under-abstraction creates future rewrite cost."
+      },
+      {
+        "decision": "Strict Layering vs Pragmatic Access",
+        "optionA": "Controller -> Service -> Repository only",
+        "optionB": "Selective shortcuts for simple reads",
+        "chooseWhen": "Use strict layering for larger teams and long-lived systems; allow shortcuts for isolated utility flows.",
+        "risk": "Shortcuts can spread and weaken boundaries if not governed."
+      },
+      {
+        "decision": "Runtime Flexibility vs Predictability",
+        "optionA": "Plugin/strategy driven behavior",
+        "optionB": "Static branching in code paths",
+        "chooseWhen": "Use strategy plugins for high variation domains; use static paths when behavior is stable.",
+        "risk": "Highly dynamic systems can be harder to debug and reason about."
+      }
+    ],
+    "examples": [
+      {
+        "name": "Order Repository",
+        "context": "Order Repository demands clear boundaries around Entity modeling and predictable behavior during peak usage.",
+        "designChoice": "Use a staged design with a fast path and a durable path, then expose explicit fallback behavior to callers.",
+        "why": "This keeps latency stable for normal traffic while preserving correctness for critical writes and failure recovery."
+      },
+      {
+        "name": "Inventory Transaction Service",
+        "context": "Inventory Transaction Service introduces changing requirements and forces design updates without breaking existing clients.",
+        "designChoice": "Introduce stable interfaces, versioned contracts, and observability from the start so changes remain testable.",
+        "why": "You can iterate safely while preserving backward compatibility and maintaining confidence in production behavior."
+      }
+    ],
+    "interviewQa": [
+      {
+        "question": "How would you design persistence & repositories for 10x growth?",
+        "answerFramework": [
+          "Clarify constraints and traffic shape",
+          "Estimate scale and hotspots",
+          "Propose baseline architecture",
+          "Address bottlenecks and failure modes",
+          "Explain final trade-offs"
+        ]
+      },
+      {
+        "question": "Which trade-off is most important in persistence & repositories and why?",
+        "answerFramework": [
+          "State competing goals",
+          "Choose one based on business risk",
+          "Describe mitigation for the rejected option",
+          "Define monitoring signals",
+          "Describe revisit trigger"
+        ]
+      },
+      {
+        "question": "How do you handle failures in Entity modeling?",
+        "answerFramework": [
+          "Enumerate failure classes",
+          "Add retries and idempotency boundaries",
+          "Plan degraded behavior",
+          "Protect data correctness",
+          "Close with incident response approach"
+        ]
+      },
+      {
+        "question": "What would be your API and data model choices for persistence & repositories?",
+        "answerFramework": [
+          "List key entities",
+          "Define read/write patterns",
+          "Choose consistency level",
+          "Define pagination or batching strategy",
+          "Cover evolution and versioning"
+        ]
+      },
+      {
+        "question": "How would you explain this design to a senior interviewer in 5 minutes?",
+        "answerFramework": [
+          "Start with requirements",
+          "Show architecture and data flow",
+          "Highlight critical trade-offs",
+          "Call out failure handling",
+          "Suggest future improvements"
+        ]
+      }
+    ],
+    "revision": {
+      "cheatSheet": [
+        "Start every Persistence & Repositories answer with assumptions and limits.",
+        "Name one latency-sensitive path and one correctness-sensitive path.",
+        "State how Entity modeling is written and read under load.",
+        "Explain one scaling strategy and one fallback strategy.",
+        "Mention observability: metrics, logs, and tracing checkpoints.",
+        "Call out a deliberate de-scope to keep MVP practical.",
+        "Finish with what you would improve in version two."
+      ],
+      "redFlags": [
+        "Choosing technology without linking it to constraints.",
+        "Ignoring data consistency or idempotency for write operations.",
+        "No failure-mode story for dependency outages.",
+        "No plan to measure whether the design is actually working."
+      ]
+    }
+  }
+}
