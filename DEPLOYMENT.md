@@ -5,7 +5,7 @@
 This project is a static multi-page frontend (`public/`) plus an Express API backend (`server/`).
 It is not Next.js and not React.
 
-- Frontend host: Vercel (static pages)
+- Frontend host: Vercel (static pages )
 - Backend host: Render (Node web service)
 - DB: SQLite on Render persistent disk (`/var/data/activity_guide.db`)
 
