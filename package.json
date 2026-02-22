@@ -4,9 +4,13 @@
   "description": "System Design & LLD Study Hub",
   "main": "server/app.js",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "nodemon server/app.js",
     "start": "node server/app.js",
+    "start:backend": "node server/app.js",
     "test": "node --test tests/*.test.js"
   },
   "dependencies": {

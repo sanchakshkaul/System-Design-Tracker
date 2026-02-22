@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: activity-guide-api
+    runtime: node
+    plan: free
+    autoDeploy: true
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: SERVE_STATIC
+        value: "false"
+      - key: CORS_ORIGIN
+        sync: false
+      - key: DB_FILE
+        value: /var/data/activity_guide.db
+    disk:
+      name: activity-guide-data
+      mountPath: /var/data
+      sizeGB: 1

@@ -1,6 +1,28 @@
 (function () {
+  function trimTrailingSlash(value) {
+    return String(value || '').replace(/\/+$/, '');
+  }
+
+  function getApiBaseUrl() {
+    const runtimeConfigBase =
+      window.RUNTIME_CONFIG && typeof window.RUNTIME_CONFIG.API_BASE_URL === 'string'
+        ? window.RUNTIME_CONFIG.API_BASE_URL
+        : '';
+    const metaBase = document.querySelector('meta[name="api-base-url"]')?.content || '';
+    return trimTrailingSlash(runtimeConfigBase || metaBase);
+  }
+
+  const API_BASE_URL = getApiBaseUrl();
+
+  function withBase(path) {
+    if (!API_BASE_URL) {
+      return path;
+    }
+    return `${API_BASE_URL}${path}`;
+  }
+
   async function request(url, options) {
-    const response = await fetch(url, {
+    const response = await fetch(withBase(url), {
       headers: {
         'Content-Type': 'application/json'
       },
