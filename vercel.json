@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/assets/(.*)",
+      "destination": "/public/assets/$1"
+    },
+    {
+      "source": "/modules/system-design",
+      "destination": "/public/modules/system-design.html"
+    },
+    {
+      "source": "/modules/lld",
+      "destination": "/public/modules/lld.html"
+    },
+    {
+      "source": "/topic",
+      "destination": "/public/topic.html"
+    },
+    {
+      "source": "/",
+      "destination": "/public/index.html"
+    }
+  ]
+}
